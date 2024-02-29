@@ -1,14 +1,12 @@
-import WebSocket from 'ws';
+import WebSocket, { WebSocketServer } from 'ws';
 import fs from 'fs';
 import https from 'https';
-import dotenv from 'dontenv';
-
-dotenv.config();
+import logger from '../utils/logger.js'
 
 
 const serverOptions = {
-    cert: fs.readFileSync(''),
-    key: fs.readFileSync(''),
+    cert: fs.readFileSync('C:/key/myserver.crt'),
+    key: fs.readFileSync('C:/key/myserver.key'),
 };
 
 class ClientConnector {
@@ -20,7 +18,7 @@ class ClientConnector {
 
     initWSS() {
         const server = https.createServer(serverOptions);
-        this.wss = new WebSocket.Server( { server } );
+        this.wss = new WebSocketServer( { server } );
 
         this.wss.on('connection', (ws) => {
             logger.info('Client connected');
@@ -43,4 +41,4 @@ class ClientConnector {
     }
 }
 
-const ClientConnector = new ClientConnector()
+export default ClientConnector;

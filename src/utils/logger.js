@@ -1,6 +1,8 @@
 import { createLogger, config, format as _format, transports as _transports } from 'winston';
 import path from 'path';
 import 'winston-daily-rotate-file';
+import os from 'os';
+import fs from 'fs';
 
 const logDir = path.join(os.homedir(), 'AppData', 'Local', 'MemGPTBroker', 'Logs');
 

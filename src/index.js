@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import ServerConnector from './broker/serverConnector';
-import ClientConnector from './broker/clientConnector';
+import ServerConnector from './broker/serverConnector.js';
+import ClientConnector from './broker/clientConnector.js';
 
 dotenv.config()
 

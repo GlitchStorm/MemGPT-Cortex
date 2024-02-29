@@ -1,10 +1,6 @@
 import WebSocket from 'ws';
-import dotenv from 'dotenv';
-import { setupEndlessReconnection } from '../utils/reconnect';
-import logger from '../utils/logger';
-
-// Load environment variables
-dotenv.config();
+import { setupEndlessReconnection } from '../utils/reconnect.js';
+import logger from '../utils/logger.js';
 
 class ServerConnector {
   constructor() {
@@ -51,4 +47,4 @@ class ServerConnector {
   }
 }
 
-const serverConnector = new ServerConnector();
+export default ServerConnector;

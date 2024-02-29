@@ -1,3 +1,5 @@
+import logger from './logger.js'
+
 // Enhanced reconnection function with endless retry mode
 export function setupEndlessReconnection(connectFunction) {
     function reconnect() {
