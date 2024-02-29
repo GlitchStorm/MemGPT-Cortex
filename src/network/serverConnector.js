@@ -1,6 +1,9 @@
 import WebSocket from 'ws';
 import { setupEndlessReconnection } from '../utils/reconnect.js';
 import logger from '../utils/logger.js';
+import serverQueue from '../queue/serverQueue.js';
+import mongoose from 'mongoose';
+import Message from '../database/models/Message.js';
 
 class ServerConnector {
   constructor() {
@@ -40,9 +43,10 @@ class ServerConnector {
   sendMessage(message) {
     if (this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(message);
+      //TODO: Store message in DB
     } else {
-      logger.error('WebSocket is not open. Message not sent:', message);
-      // You might queue messages here or handle this scenario according to your needs
+      logger.error('WebSocket is not open. Queuing message:', message);
+      serverQueue.add({ message });
     }
   }
 }
