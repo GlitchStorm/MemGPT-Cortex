@@ -2,6 +2,7 @@
   "name": "memgptbroker",
   "version": "1.0.0",
   "description": "Middleware to handle connections and data buffer between MemGPT and MemGPT Mobile",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +14,8 @@
     "dotenv": "^16.4.5",
     "https": "^1.0.0",
     "mongodb": "^6.3.0",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^5.0.0",
     "ws": "^8.16.0"
   }
 }

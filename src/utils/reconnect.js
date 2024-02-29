@@ -2,7 +2,7 @@
 export function setupEndlessReconnection(connectFunction) {
     function reconnect() {
       setTimeout(() => {
-        console.log(`Attempting to reconnect...`);
+        logger.info(`Attempting to reconnect...`);
         connectFunction();
       }, calculateReconnectionDelay());
     }

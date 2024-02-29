@@ -23,22 +23,22 @@ class ClientConnector {
         this.wss = new WebSocket.Server( { server } );
 
         this.wss.on('connection', (ws) => {
-            console.log('Client connected');
+            logger.info('Client connected');
 
             ws.on('message', (message) => {
-                console.log('Received message from client:', message);
+                logger.info('Received message from client:', message);
                 //handle incoming messages
             });
 
             ws.on('close', () => {
-                console.log('Client disconnected')
+                logger.error('Client disconnected')
             })
 
             //send messages here with ws.send()
         });
 
         server.listen(this.port, () => {
-            console.log(`WSS server listening on port ${this.port}`);
+            logger.info(`WSS server listening on port ${this.port}`);
         });
     }
 }
