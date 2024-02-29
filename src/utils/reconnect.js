@@ -10,7 +10,7 @@ export function setupEndlessReconnection(connectFunction) {
     }
   
     function calculateReconnectionDelay() {
-      return 5000; // Reconnect every 5 seconds
+      return 15000; // Reconnect every 15 seconds
     }
   
     return reconnect;
