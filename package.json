@@ -1,0 +1,17 @@
+{
+  "name": "memgptbroker",
+  "version": "1.0.0",
+  "description": "Middleware to handle connections and data buffer between MemGPT and MemGPT Mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bull": "^4.12.2",
+    "https": "^1.0.0",
+    "mongodb": "^6.3.0",
+    "ws": "^8.16.0"
+  }
+}
