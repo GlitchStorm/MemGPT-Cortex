@@ -1,11 +1,12 @@
-import Client from '../database/models/Clients.js';
-import Agent from '../database/models/Agents.js';
+import Client from '../database/models/clientConnections.js';
+import Agent from '../database/models/serverConnections.js';
 import logger from './logger.js';
 
 export const clientsMap = new Map();
 export const agentsMap = new Map();
 export const reverseAgentsMap = new Map(); //enables agent UUID lookup by connectionAddress
 
+//TODO: deprecate this function
 export async function loadUUIDs() {
     try {
         const clients = await Client.find();

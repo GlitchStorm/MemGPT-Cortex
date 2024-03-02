@@ -19,7 +19,7 @@ class ServerConnector {
     this.ws = new WebSocket(this.memgptServerWsUrl);
 
     this.ws.on('open', () => {
-      logger.info('Connected to MemGPT server'); //TODO: rename this as this could be any number of servers
+      logger.info('Connected to MemGPT server');
       if (!reverseAgentsMap.find(this.memgptServerWsUrl)) {
         //create new UUID and populate the maps
         const agentUUID = uuidv4();
