@@ -2,8 +2,10 @@ import WebSocket from 'ws';
 import { setupEndlessReconnection } from '../utils/reconnect.js';
 import logger from '../utils/logger.js';
 import serverQueue from '../queue/serverQueue.js';
+import { v4 as uuidv4 } from 'uuid';
 import mongoose from 'mongoose';
 import Message from '../database/models/Message.js';
+import { reverseAgentsMap } from '../utils/uuid.js';
 
 class ServerConnector {
   constructor() {
@@ -17,8 +19,12 @@ class ServerConnector {
     this.ws = new WebSocket(this.memgptServerWsUrl);
 
     this.ws.on('open', () => {
-      logger.info('Connected to MemGPT server');
-      // Handle open connection
+      logger.info('Connected to MemGPT server'); //TODO: rename this as this could be any number of servers
+      if (!reverseAgentsMap.find(this.memgptServerWsUrl)) {
+        //create new UUID and populate the maps
+        const agentUUID = uuidv4();
+        
+      }
     });
 
     this.ws.on('message', (message) => {

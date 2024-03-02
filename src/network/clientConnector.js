@@ -61,7 +61,7 @@ class ClientConnector {
     handleNewClientConnection(ws) {
         //generate a new UUID for the client
         const clientUUID = uuidv4();
-        clientsMap.set(clientUUID, ws);
+        clientsMap.set(clientUUID, ws); //TODO: Check this and make sure correct data is being mapped
         logger.info(`New client connected with UUID: ${clientUUID}`);
         // Save the new client connection with UUID to the database
         const newClient = new Client({

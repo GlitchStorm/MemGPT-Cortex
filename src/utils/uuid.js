@@ -4,6 +4,7 @@ import logger from './logger.js';
 
 export const clientsMap = new Map();
 export const agentsMap = new Map();
+export const reverseAgentsMap = new Map(); //enables agent UUID lookup by connectionAddress
 
 export async function loadUUIDs() {
     try {
@@ -15,6 +16,7 @@ export async function loadUUIDs() {
         const agents = await Agent.find();
         agents.forEach(agent => {
             agentsMap.set(agent.uuid, agent)
+            reverseAgentsMap.set(agent.connectionAddress, agent.uuid)
         });
 
         logger.info('UUIDs loaded into memory');
