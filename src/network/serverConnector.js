@@ -58,3 +58,5 @@ class ServerConnector {
 }
 
 export default ServerConnector;
+
+//TODO: Rework this file to support new connectionManager

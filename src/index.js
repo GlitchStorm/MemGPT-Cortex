@@ -1,12 +1,10 @@
 import dotenv from 'dotenv';
-import ServerConnector from './network/serverConnector.js';
-import ClientConnector from './network/clientConnector.js';
+import ConnectionManager from './network/connectionManager.js';
 import { loadUUIDs } from './utils/uuid.js';
 
 dotenv.config()
 
-const serverConnector = new ServerConnector();
-const clientConnector = new ClientConnector();
+ConnectionManager.addServerConnection('MemGPTServer', { url: process.env.MEMGPT_SERVER_WS_URL})//TODO: Adjust to support checking for UUID and auto-assigning if non-existent
 
 loadUUIDs().then(() => {
     logger.info('Application is ready')

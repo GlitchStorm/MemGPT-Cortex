@@ -61,17 +61,18 @@ class ClientConnector {
     handleNewClientConnection(ws) {
         //generate a new UUID for the client
         const clientUUID = uuidv4();
-        clientsMap.set(clientUUID, ws); //TODO: Check this and make sure correct data is being mapped
         logger.info(`New client connected with UUID: ${clientUUID}`);
         // Save the new client connection with UUID to the database
         const newClient = new Client({
           uuid: clientUUID,
+          registrationDate: Date.now
         });
         newClient.save((err, savedClient) => {
           if (err) {
             logger.error('Error saving new client:', err);
           } else {
             logger.info(`Client saved with UUID: ${savedClient.uuid}`);
+            clientsMap.set(clientUUID, newClient);
           }
         });
         return clientUUID;
@@ -79,3 +80,5 @@ class ClientConnector {
 }
 
 export default ClientConnector;
+
+//TODO: Rework this file to support new connectionManager
