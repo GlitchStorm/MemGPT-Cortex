@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Middleware to handle connections and data buffer between MemGPT and MemGPT Mobile",
   "type": "module",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "api": "^6.1.1",
     "bull": "^4.12.2",
     "dotenv": "^16.4.5",
     "https": "^1.0.0",
